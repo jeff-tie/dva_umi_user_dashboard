@@ -52,6 +52,9 @@ class UserEditModal extends Component {
         <Modal
           title="Edit User"
           visible={this.state.visible}
+          destroyOnClose={true}
+          maskClosable={false}
+          keyboard={false}
           onOk={this.okHandler}
           onCancel={this.hideModelHandler}
         >
