@@ -101,14 +101,12 @@ class Users extends PureComponent {
             columns={columns}
             dataSource={dataSource}
             rowKey={record => record.id}
-            pagination={false}
-          />
-          <Pagination
-            className="ant-table-pagination"
-            total={total}
-            current={current}
-            pageSize={PAGE_SIZE}
-            onChange={this.pageChangeHandler}
+            pagination={{
+              total,
+              current,
+              pageSize: PAGE_SIZE,
+              onChange: this.pageChangeHandler
+            }}
           />
         </div>
       </div>
