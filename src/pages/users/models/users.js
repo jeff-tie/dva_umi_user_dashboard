@@ -6,11 +6,18 @@ export default {
     list: [],
     total: null,
     page: null,
+    modalVisible: false
   },
   reducers: {
     save(state, { payload: { data: list, total, page } }) {
       return { ...state, list, total, page };
     },
+    modalShow(state) {
+      return {...state, modalVisible: true}
+    },
+    modalHide(state) {
+      return {...state, modalVisible: false}
+    }
   },
   effects: {
     *fetch({ payload: { page = 1 } }, { call, put }) {

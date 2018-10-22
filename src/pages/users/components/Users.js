@@ -4,6 +4,7 @@ import { Table, Pagination, Popconfirm, Button } from 'antd';
 import styles from './Users.css';
 import { PAGE_SIZE } from '../constants';
 import UserModal from './UserModal';
+import UserModal2 from "./UserModal2";
 
 class Users extends PureComponent {
 
@@ -37,10 +38,7 @@ class Users extends PureComponent {
 
   createHandler = (values) => {
     const {dispatch} = this.props
-    dispatch({
-      type: 'users/create',
-      payload: values,
-    });
+    dispatch({type: 'users/modalShow'});
   }
 
   componentDidMount() {
@@ -77,9 +75,9 @@ class Users extends PureComponent {
         key: 'operation',
         render: (text, record) => (
           <span className={styles.operation}>
-          <UserModal record={record} onOk={this.editHandler.bind(null,record.id)}>
-            <a>Edit</a>
-          </UserModal>
+          {/*<UserModal record={record} onOk={this.editHandler.bind(null,record.id)}>*/}
+            {/*<a>Edit</a>*/}
+          {/*</UserModal>*/}
           <Popconfirm title="Confirm to delete?" onConfirm={this.deleteHandler.bind(null, record.id)}>
             <a href="">Delete</a>
           </Popconfirm>
@@ -90,11 +88,15 @@ class Users extends PureComponent {
 
     return (
       <div className={styles.normal}>
+        <UserModal2/>
         <div>
           <div className={styles.create}>
-            <UserModal record={{}} onOk={this.createHandler}>
-              <Button type="primary">Create User</Button>
-            </UserModal>
+            {/*<UserModal record={{}} onOk={this.createHandler}>*/}
+              {/*<Button type="primary">Create User</Button>*/}
+            {/*</UserModal>*/}
+            <Button onClick={this.createHandler}>
+              Create User
+            </Button>
           </div>
           <Table
             loading={loading}
